@@ -1,0 +1,156 @@
+/* style.css */
+body {
+    font-family: sans-serif;
+    background-color: #f8edeb; /* Un tono suave */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg fill='%23fcd5ce' fill-opacity='0.4'%3E%3Cpath d='M0 16h16v16H0zM16 0h16v16H16z'/%3E%3C/g%3E%3C/svg%3E"); /* Lunares muy suaves */
+}
+
+.quiz-container {
+    background-color: #fff;
+    padding: 20px; /* Reducido el padding para pantallas más pequeñas */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 90%; /* Permite que ocupe más ancho en móviles */
+    margin: 20px;
+}
+
+h1 {
+    color: #e63946; /* Rojo coral */
+    margin-bottom: 20px;
+    font-size: 1.8em; /* Ajustado el tamaño de la fuente */
+}
+
+.question-panel {
+    display: none;
+}
+
+.question-panel.active {
+    display: block;
+    font-size: 1.1em; /* Ajustado el tamaño de la fuente */
+    margin-bottom: 20px;
+}
+
+.question-panel h2 {
+    color: #1d3557; /* Azul oscuro */
+    margin-bottom: 15px;
+    font-size: 1.3em; /* Ajustado el tamaño de la fuente */
+}
+
+.answers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.answer-button {
+    padding: 12px 15px; /* Reducido el padding */
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.95em; /* Ajustado el tamaño de la fuente */
+    transition: transform 0.2s ease-in-out;
+}
+
+.answer-button:hover {
+    transform: scale(1.05);
+}
+
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); /* Fondo oscuro semitransparente */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fdf0d5; /* Amarillo pastel */
+    margin: 15px; /* Ajustado el margen */
+    padding: 25px; /* Reducido el padding */
+    border-radius: 15px;
+    width: 90%; /* Permite que ocupe más ancho en móviles */
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.modal-content p {
+    color: #e63946;
+    font-size: 1em; /* Ajustado el tamaño de la fuente */
+    margin-bottom: 20px;
+}
+
+#modal-close-button {
+    background-color: #a8dadc; /* Verde azulado pastel */
+    color: white;
+    padding: 10px 18px; /* Reducido el padding */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em; /* Ajustado el tamaño de la fuente */
+    transition: background-color 0.3s ease;
+}
+
+#modal-close-button:hover {
+    background-color: #457b9d;
+}
+
+/* Media query para pantallas más pequeñas (móviles) */
+@media (max-width: 600px) {
+    .quiz-container {
+        padding: 15px;
+        margin: 10px;
+        border-radius: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .question-panel.active {
+        font-size: 1em;
+        margin-bottom: 15px;
+    }
+
+    .question-panel h2 {
+        font-size: 1.2em;
+    }
+
+    .answers {
+        grid-template-columns: 1fr; /* Apilar las respuestas en una columna */
+        gap: 8px;
+    }
+
+    .answer-button {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    .modal-content {
+        padding: 20px;
+        margin: 10px;
+        border-radius: 10px;
+    }
+
+    .modal-content p {
+        font-size: 0.95em;
+    }
+
+    #modal-close-button {
+        padding: 8px 15px;
+        font-size: 0.85em;
+    }
+}
