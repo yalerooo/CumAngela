@@ -5,11 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿Cuánto Sabes de Gatitos?</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos básicos para el marcador de puntos */
+        #score-container {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000; /* Asegura que esté encima de otros elementos */
+            font-size: 1.2em;
+        }
+
+        /* Estilos para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .modal-content {
+                margin: 10% auto;
+                max-width: 500px;
+            }
+        }
+
+        #modal-close-button, #start-button, #unlock-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* Estilos para el modal de inicio */
+        #start-modal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #start-modal .modal-content {
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
+    <div id="score-container">Puntos: <span id="score">0</span></div>
+    <div id="start-modal" class="modal">
+        <div class="modal-content">
+            <h2>Bienvenido al Quiz</h2>
+            <p>¿Listo para poner a prueba tus conocimientos?</p>
+            <button id="start-button">¡Empezar!</button>
+        </div>
+    </div>
     <div class="quiz-container">
         <h1>Angela cerda</h1>
-        <div id="question-panel-1" class="question-panel active">
+        <div id="question-panel-1" class="question-panel">
             <h2 id="question-text-1">Pregunta 1 aquí</h2>
             <div class="answers">
                 <button class="answer-button" style="background-color: #ffadad;" data-correct="false">Respuesta A</button>
@@ -111,8 +183,17 @@
 
         <div id="incorrect-modal" class="modal">
             <div class="modal-content">
-                <p>¡Miau! Respuesta incorrecta. ¡Inténtalo de nuevo!</p>
+                <p>¡Miau! Respuesta incorrecta.</p>
+                <p>La respuesta correcta era: <span id="correct-answer-text"></span></p>
                 <button id="modal-close-button">OK</button>
+            </div>
+        </div>
+
+        <div id="gift-unlock-modal" class="modal">
+            <div class="modal-content">
+                <h2>¡Casi lo logras!</h2>
+                <p>Para desbloquear tu regalo, necesitas acertar al menos 9 preguntas.</p>
+                <button id="unlock-button">OK</button>
             </div>
         </div>
     </div>
@@ -150,82 +231,107 @@
                 correctAnswer: "#ffca3a"
             },
             {
-                question: "¿Cuál es el sonido que hacen los gatos cuando están contentos?",
+                question: "¿Que coche tiene Javi?",
                 answers: {
-                    "#ffadad": "Maullar",
-                    "#8ac926": "Ronronear",
-                    "#1982c4": "Silbar",
-                    "#ffca3a": "Gruñir"
-                },
-                correctAnswer: "#8ac926"
-            },
-            {
-                question: "¿De qué sabor son insensibles los gatos?",
-                answers: {
-                    "#ffadad": "Salado",
-                    "#8ac926": "Dulce",
-                    "#1982c4": "Amargo",
-                    "#ffca3a": "Ácido"
-                },
-                correctAnswer: "#8ac926"
-            },
-            {
-                question: "¿Cuál es el período de gestación de una gata?",
-                answers: {
-                    "#ffadad": "Aproximadamente 3 meses",
-                    "#8ac926": "Aproximadamente 6 meses",
-                    "#1982c4": "Aproximadamente 2 meses",
-                    "#ffca3a": "Aproximadamente 9 meses"
+                    "#ffadad": "volkswagen polo GTI MK3",
+                    "#8ac926": "volkswagen golf R MK3",
+                    "#1982c4": "volkswagen golf GTI MK3",
+                    "#ffca3a": "volkswagen golf GTI MK2r"
                 },
                 correctAnswer: "#1982c4"
             },
             {
-                question: "¿Cómo se llama el reflejo que permite a los gatos enderezarse al caer?",
+                question: "¿Cual el bias de Bts de Nekane?",
                 answers: {
-                    "#ffadad": "Reflejo de huida",
-                    "#8ac926": "Reflejo de supervivencia",
-                    "#1982c4": "Reflejo de enderezamiento",
-                    "#ffca3a": "Reflejo felino"
-                },
-                correctAnswer: "#1982c4"
-            },
-            {
-                question: "¿Qué significa cuando un gato amasa con sus patas?",
-                answers: {
-                    "#ffadad": "Está marcando territorio",
-                    "#8ac926": "Está mostrando afecto y confort",
-                    "#1982c4": "Está afilando sus uñas",
-                    "#ffca3a": "Está pidiendo comida"
+                    "#ffadad": "Jungkook",
+                    "#8ac926": "V",
+                    "#1982c4": "Jimim",
+                    "#ffca3a": "RM"
                 },
                 correctAnswer: "#8ac926"
             },
             {
-                question: "¿Cuántas garras tienen normalmente los gatos en cada pata delantera?",
+                question: "¿Que carta queria Rubius que no pudo conseguir?",
                 answers: {
-                    "#ffadad": "4",
-                    "#8ac926": "5",
-                    "#1982c4": "6",
-                    "#ffca3a": "3"
+                    "#ffadad": "Latios",
+                    "#8ac926": "Pikachu EX",
+                    "#1982c4": "Pikachu culon",
+                    "#ffca3a": "Pikacho gordito"
+                },
+                correctAnswer: "#1982c4"
+            },
+            {
+                question: "¿Cuantas variedades de gatos hay en minecraft?",
+                answers: {
+                    "#ffadad": "6",
+                    "#8ac926": "13",
+                    "#1982c4": "8",
+                    "#ffca3a": "11"
+                },
+                correctAnswer: "#ffca3a"
+            },
+            {
+                question: "¿Angela tiene pito?",
+                answers: {
+                    "#ffadad": "Si",
+                    "#8ac926": "No",
+                    "#1982c4": "No, son fake news",
+                    "#ffca3a": "No pero de otro color"
+                },
+                correctAnswer: "#ffadad"
+            },
+            {
+                question: "¿Cual es la persona que mas le gusta a Yalero?",
+                answers: {
+                    "#ffadad": "Messi",
+                    "#8ac926": "Chaewon",
+                    "#1982c4": "Rubius",
+                    "#ffca3a": "Miyamoto"
                 },
                 correctAnswer: "#8ac926"
             },
             {
-                question: "¿Cuál de estas razas de gatos es conocida por no tener pelo?",
+                question: "Kazhdaya devchonka khochet tantsevat' s toboy...",
                 answers: {
-                    "#ffadad": "Siamés",
-                    "#8ac926": "Persa",
-                    "#1982c4": "Esfinge",
-                    "#ffca3a": "Maine Coon"
+                    "#ffadad": "sigma, sigma boy, sigma boy, sigma boy",
+                    "#8ac926": "SquiSkibidi, dom-dom-dom, yes-yes",
+                    "#1982c4": "rizzy, rizz, rizz, rizz",
+                    "#ffca3a": "ohay, ohio, ohio, ohio"
                 },
-                correctAnswer: "#1982c4"
+                correctAnswer: "#ffadad"
             }
         ];
 
         let currentQuestion = 0;
+        let score = 0;
+        const scoreDisplay = document.getElementById('score');
         const questionPanels = document.querySelectorAll('.question-panel');
         const answerButtons = document.querySelectorAll('.answer-button');
         const incorrectModal = document.getElementById('incorrect-modal');
         const modalCloseButton = document.getElementById('modal-close-button');
+        const correctAnswerText = document.getElementById('correct-answer-text');
+        const startModal = document.getElementById('start-modal');
+        const startButton = document.getElementById('start-button');
+        const giftUnlockModal = document.getElementById('gift-unlock-modal');
+        const unlockButton = document.getElementById('unlock-button');
+
+        function startQuiz() {
+            localStorage.setItem('catQuizScore', '0');
+            score = 0;
+            scoreDisplay.textContent = score;
+            currentQuestion = 0; // Reset current question
+            showQuestion(currentQuestion);
+            startModal.style.display = 'none';
+        }
+
+        function resetQuiz() {
+            score = 0;
+            scoreDisplay.textContent = score;
+            currentQuestion = 0;
+            showQuestion(currentQuestion);
+        }
+
+        questionPanels.forEach(panel => panel.classList.remove('active'));
 
         function loadQuestion(index) {
             const panel = questionPanels[index];
@@ -245,26 +351,54 @@
         }
 
         function showQuestion(index) {
-            questionPanels.forEach((panel, i) => {
-                panel.classList.remove('active');
-                if (i === index) {
-                    panel.classList.add('active');
+            if (index < questions.length) {
+                questionPanels.forEach((panel, i) => {
+                    panel.classList.remove('active');
+                    if (i === index) {
+                        panel.classList.add('active');
+                    }
+                });
+                loadQuestion(index);
+            } else {
+                // Check the score before redirecting
+                if (score < 9) {
+                    giftUnlockModal.style.display = 'flex';
+                } else {
+                    localStorage.setItem('catQuizScore', score.toString());
+                    window.location.href = 'end.html';
                 }
-            });
-            loadQuestion(index);
+            }
         }
 
         answerButtons.forEach(button => {
             button.addEventListener('click', function() {
-                if (this.dataset.correct === 'true') {
+                const isCorrect = this.dataset.correct === 'true';
+                if (isCorrect) {
+                    score++;
+                    scoreDisplay.textContent = score;
+                    localStorage.setItem('catQuizScore', score);
                     if (currentQuestion < questions.length - 1) {
                         currentQuestion++;
                         showQuestion(currentQuestion);
                     } else {
-                        // Redirigir a la página de regalo
-                        window.location.href = 'regalo.html';
+                        // Check the score before redirecting after the last question
+                        if (score < 9) {
+                            giftUnlockModal.style.display = 'flex';
+                        } else {
+                            localStorage.setItem('catQuizScore', score.toString());
+                            window.location.href = 'end.html';
+                        }
                     }
                 } else {
+                    const currentQuestionData = questions[currentQuestion];
+                    let correctOptionText = '';
+                    for (const color in currentQuestionData.answers) {
+                        if (color === currentQuestionData.correctAnswer) {
+                            correctOptionText = currentQuestionData.answers[color];
+                            break;
+                        }
+                    }
+                    correctAnswerText.textContent = correctOptionText;
                     incorrectModal.style.display = 'flex';
                 }
             });
@@ -272,17 +406,51 @@
 
         modalCloseButton.addEventListener('click', () => {
             incorrectModal.style.display = 'none';
-        });
-
-        // Cerrar el modal si se hace clic fuera de él
-        window.addEventListener('click', (event) => {
-            if (event.target === incorrectModal) {
-                incorrectModal.style.display = 'none';
+            // Go to the next question even if the answer was wrong
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            } else {
+                // Check the score before redirecting if it was the last question
+                if (score < 9) {
+                    giftUnlockModal.style.display = 'flex';
+                } else {
+                    localStorage.setItem('catQuizScore', score.toString());
+                    window.location.href = 'end.html';
+                }
             }
         });
 
-        // Cargar la primera pregunta al inicio
-        showQuestion(currentQuestion);
+        window.addEventListener('click', (event) => {
+            if (event.target === incorrectModal) {
+                incorrectModal.style.display = 'none';
+                // Go to the next question even if the answer was wrong
+                if (currentQuestion < questions.length - 1) {
+                    currentQuestion++;
+                    showQuestion(currentQuestion);
+                } else {
+                    // Check the score before redirecting if it was the last question
+                    if (score < 9) {
+                        giftUnlockModal.style.display = 'flex';
+                    } else {
+                        localStorage.setItem('catQuizScore', score.toString());
+                        window.location.href = 'end.html';
+                    }
+                }
+            }
+            if (event.target === giftUnlockModal) {
+                giftUnlockModal.style.display = 'none';
+                resetQuiz(); // Call resetQuiz to start over
+            }
+        });
+
+        startButton.addEventListener('click', startQuiz);
+        startModal.style.display = 'flex';
+
+        unlockButton.addEventListener('click', () => {
+            giftUnlockModal.style.display = 'none';
+            resetQuiz(); // Call resetQuiz to start over
+        });
     </script>
 </body>
 </html>

@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>¿Cuánto Sabes de Gatitos?</title>
+    <style>
+       @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
+
+@font-face {
+  font-family: "SF Text";
+  font-weight: 100;
+  font-style: italic;
+  src: url("https://sf.abarba.me/SF-UI-Text-UltrathinItalic.otf");
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  background: linear-gradient(240deg, rgba(157, 75, 77, 1), rgba(101, 64, 115, 1));
+  margin: 0;
+    overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.iphone {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  height: 590px;
+  display: block;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.iphone img.iphone {
+  width: 100%;
+  height: 100%;
+}
+
+.iphone img {
+  max-width: 100%;
+}
+
+.iphone .content {
+  position: absolute;
+  background-size: 280px 570px;
+  left: 20px;
+  top: 12px;
+  width: 261px;
+  height: 566px;
+  border-radius: 34px;
+  z-index: -1;
+  overflow-x: auto;
+}
+
+.iphone .content .top-notch {
+  height: 5%;
+  width: 92%;
+  padding-top: 8px;
+  margin: 0 auto;
+  bottom: 7.5%;
+}
+
+.iphone .content .top-notch .icons-left, .iphone .content .top-notch .icons-right {
+  font-size: 70%;
+  margin-top: 5px;
+  color: #FFFFFF;
+}
+
+.iphone .content .top-notch .icons-left {
+  padding-left: 8px;
+  float: left;
+}
+
+.iphone .content .top-notch .icons-left span {
+  font-size: 100%;
+  font-weight: 600;
+  text-align: center;
+}
+
+.iphone .content .top-notch .icons-right {
+  float: right;
+  margin-right: 0px;
+}
+
+.iphone .content .top-notch .fa-battery-full {
+  margin-left: 3px;
+}
+
+.iphone .content .top-notch .fa-wifi {
+  margin-left: 3px;
+}
+
+.iphone .content .lock-icon {
+  top: 8%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.iphone .content .lock-icon img {
+  width: 20px;
+  height: 25%;
+}
+
+.iphone .content .clock-text-overlay {
+  top: 10%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.iphone .content .clock-text-overlay h1 {
+  font-size: 230%;
+  font-weight: 400;
+  color: #FFFFFF;
+  transform: scale(0.9, 1.1);
+}
+
+.iphone .content .touch-overlay {
+  bottom: 8%;
+}
+
+.iphone .content .touch-overlay img {
+  width: 40px;
+  height: 40px;
+}
+..date-text{
+    color: #FFFFFF;
+}
+.iphone .content .date-text-overlay {
+  top: 19%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.iphone .content .date-text-overlay h5 {
+  color: #FFFFFF;
+  font-weight: 500;
+  transform: scale(1, 1.1);
+}
+
+.iphone .content .line {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  width: 130px;
+  height: 5px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.35);
+  transform: translateX(-50%);
+}
+
+.signal-icon {
+  color: #FFF;
+  margin-left: 1px;
+}
+
+.signal-icon img {
+  width: 13px;
+  height: 10px;
+  color: #FFF;
+}
+
+.zoomIn {
+  animation-duration: .5s;
+}
+
+.message-overlay {
+  position: absolute;
+  top: 28%;
+  margin: 8px;
+  visibility: hidden;
+}
+
+.message-overlay img {
+  opacity: 0.9;
+  width: 94%;
+  padding-left: 6%;
+}
+
+.message-overlay img:hover {
+  cursor: pointer;
+}
+
+.message-overlay img:active {
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(1.02);
+  transition: transform .25s ease;
+}
+
+.touch-overlay {
+  position: absolute;
+  bottom: 8%;
+  width: 90%;
+}
+
+.left-touch {
+  float: left;
+  padding-left: 12%;
+}
+
+.left-touch img {
+  width: 40px;
+  height: 40px;
+  float: left;
+}
+
+.right-touch {
+  float: right;
+}
+
+.right-touch img {
+  width: 40px;
+  height: 40px;
+  float: right;
+}
+
+.merrywrap {
+  position: absolute;
+  left: 50px;
+  bottom: 40px;
+  top: 40px;
+  visibility: hidden;
+}
+
+.giftbox {
+  position: absolute;
+  width: 200px;
+  height: 150px;
+  left: 50%;
+  margin-left: -150px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.giftbox > div {
+  background: #fffb1d;
+  position: absolute;
+}
+
+.giftbox:after {
+  position: absolute;
+  color: #000000;
+  width: 100%;
+  content: "Abreme";
+  left: 0;
+  bottom: 0;
+  font-size: 24px;
+  text-align: center;
+  transform: rotate(-20deg);
+  transform-origin: 0 0;
+}
+
+.giftbox .cover {
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 25%;
+  z-index: 2;
+}
+
+.giftbox .cover:before {
+  position: absolute;
+  height: 100%;
+  left: 50%;
+  width: 50px;
+  transform: translateX(-50%);
+  background: #000000;
+}
+
+.giftbox .cover > div {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: 50%;
+  top: -50px;
+  transform: translateX(-50%);
+}
+
+.giftbox .cover > div:before, .giftbox .cover > div:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  box-shadow: inset 0 0 0 15px #fdc56d;
+  border-radius: 30px;
+  transform-origin: 50% 100%;
+}
+
+.giftbox .box {
+  right: 5%;
+  left: 5%;
+  height: 80%;
+  bottom: 0;
+}
+
+.giftbox .box:before {
+  width: 50px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fdc56d;
+}
+
+.giftbox .box:after {
+  width: 100%;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.icons {
+  position: absolute;
+  left: -18%;
+  top: 25%;
+  width: 100%;
+  height: auto;
+  transform: translateY(-50%);
+}
+
+.icons .row {
+  width: 100%;
+  text-align: center;
+}
+
+.icons .row span {
+  color: #000000;
+  text-shadow: 5px 5px 0 #ca3121;
+  font-size: 36px;
+  display: inline-block;
+  opacity: 0;
+  transition: transform 1s ease-in, opacity 0.7s;
+}
+
+.step-1 .giftbox {
+  animation: wobble 0.5s linear infinite forwards;
+}
+
+.step-1 .cover {
+  animation: wobble 0.5s linear infinite 0.1s forwards;
+}
+
+.step-1 .icons .row span {
+  opacity: 1;
+}
+
+.step-2 .giftbox:after {
+  opacity: 0;
+}
+
+.step-3 .giftbox,
+.step-4 .giftbox {
+  opacity: 0;
+  z-index: 1;
+}
+
+.step-3 .giftbox:after,
+.step-4 .giftbox:after {
+  opacity: 0;
+}
+
+.step-2 .giftbox .cover {
+  animation: flyUp 0.4s ease-in forwards;
+}
+
+.step-2 .giftbox .box {
+  animation: flyDown 0.2s ease-in 0.05s forwards;
+}
+
+@keyframes wobble {
+  25% {
+    transform: rotate(4deg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+}
+
+@keyframes flyUp {
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-1000px) rotate(20deg);
+    opacity: 0;
+  }
+}
+
+@keyframes flyDown {
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.step-1 .icons .row span {
+  opacity: 0;
+}
+
+.step-1 .icons .row span:first-child {
+  transform: translateY(1000%) translateX(600%);
+}
+
+.step-1 .icons .row span:nth-child(2) {
+  transform: translateY(700%) translateX(500%);
+}
+
+.step-1 .icons .row span:nth-child(3) {
+  transform: translateY(700%) translateX(400%);
+}
+
+.step-1 .icons .row span:nth-child(4) {
+  transform: translateY(700%) translateX(300%);
+}
+
+.step-1 .icons .row span:nth-child(5) {
+  transform: translateY(700%) translateX(200%);
+}
+
+.step-1 .icons .row span:nth-child(6) {
+  transform: translateY(700%) translateX(100%);
+}
+
+.step-1 .icons .row span:nth-child(7) {
+  transform: translateY(700%) translateX(0);
+}
+
+.step-1 .icons .row span:nth-child(8) {
+  transform: translateY(700%) translateX(-100%);
+}
+
+.step-1 .icons .row span:nth-child(9) {
+  transform: translateY(700%) translateX(-200%);
+}
+
+.step-1 .icons .row span:nth-child(10) {
+  transform: translateY(700%) translateX(-300%);
+}
+
+.step-1 .icons .row span:nth-child(11) {
+  transform: translateY(700%) translateX(-400%);
+}
+
+.step-1 .icons .row span:nth-child(12) {
+  transform: translateY(700%) translateX(-500%);
+}
+
+.step-1 .icons .row span:nth-child(13) {
+  transform: translateY(700%) translateX(-600%);
+}
+
+.step-2 .icons .row span:nth-child(2) {
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+
+.step-2 .icons .row span:nth-child(3) {
+  -webkit-transition-delay: 0.15s;
+  transition-delay: 0.15s;
+}
+
+.step-2 .icons .row span:nth-child(4) {
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+
+.step-2 .icons .row span:nth-child(5) {
+  -webkit-transition-delay: 0.25s;
+  transition-delay: 0.25s;
+}
+
+.step-2 .icons .row span:nth-child(6) {
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+
+.step-2 .icons .row span:nth-child(7) {
+  -webkit-transition-delay: 0.35s;
+  transition-delay: 0.35s;
+}
+
+.step-2 .icons .row span:nth-child(8) {
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}
+
+.step-2 .icons .row span:nth-child(9) {
+  -webkit-transition-delay: 0.45s;
+  transition-delay: 0.45s;
+}
+
+.step-2 .icons .row span:nth-child(10) {
+  -webkit-transition-delay: 0.5s;
+  transition-delay: 0.5s;
+}
+
+.step-2 .icons .row span:nth-child(11) {
+  -webkit-transition-delay: 0.55s;
+  transition-delay: 0.55s;
+}
+
+.step-2 .icons .row span:nth-child(12) {
+  -webkit-transition-delay: 0.6s;
+  transition-delay: 0.6s;
+}
+
+.step-2 .icons .row span:nth-child(13) {
+  -webkit-transition-delay: 0.65s;
+  transition-delay: 0.65s;
+}
+
+.step-2 .icons span, .step-3 .icons span, .step-4 .icons span {
+  opacity: 0.7;
+  transition-timing-function: cubic-bezier(0.000, 0.000, 0.200, 0.910);
+}
+
+.step-4 .icons .row span, .step-3 .icons .row span {
+  animation: wobble 0.6s linear infinite forwards;
+}
+
+.step-4 .icons .row span:nth-child(even), .step-3 .icons .row span:nth-child(even) {
+  animation-duration: 0.7s;
+}
+
+.title {
+  text-align: center;
+  font-family: "Mountains of Christmas";
+}
+
+#footer a:link {
+  color: black;
+}
+
+#footer a:visited {
+  color: black;
+}
+
+#footer a:hover {
+  color: #BC1818;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+#imageContainer #imageWrapper {
+    display: flex;
+    justify-content: flex-start; /* Cambiado a flex-start */
+    margin-left: 13%; /* Agregado el margen izquierdo */
+    margin-top: 30%;
+}
+
+
+#myImage {
+    max-width: 40%;
+    height: auto;
+    display: block;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="iphone">
+    <img id="iphone" unselectable="on" draggable="false" ondragstart="return false;" class="iphone" src="https://preview.ibb.co/dGjspw/Untitled_1.png" alt="iphone">
+  <!--   <div class="loader"></div> -->
+    <div class="content" style="background-image:url('https://image.ibb.co/iOQOUw/iphone_x_wallpaper_drodviews.png');">
+      <div class="top-notch">
+
+            <div class="icons-left">
+
+              <span id="temp-notch"></span>
+
+            </div>
+
+            <div class="icons-right">
+              <i class="signal-icon"><img src="https://image.ibb.co/kZE3wb/medium_connection_filled.png"></i>
+              <i style="margin-left: 1px" class="fa fa-wifi" aria-hidden="true"></i>
+              <i style="margin-left: 1px" class="fa fa-battery-full" aria-hidden="true"></i>
+
+            </div>
+
+          </div>
+      <div class="lock-icon" id="lock-icon">
+        <img src="https://preview.ibb.co/b8nkbb/fldhjvdceuocivfarxur.png">
+      </div>
+
+      <div class="clock-text-overlay" id="clock-text-overlay">
+        <h1 id="clock-text"></h1>
+      </div>
+
+      <div class="date-overlay" id="date-overlay">
+        <h5 id="date-text"></h5>
+      </div>
+
+      <div class="touch-overlay" id="touch-overlay">
+        <div class="left-touch">
+          <img src="https://image.ibb.co/ddOC7G/icon_flashlight.png" alt="icon_flashlight">
+        </div>
+        <div class="right-touch">
+          <img src="https://image.ibb.co/bFEr1b/icon_camera.png" alt="icon_camera">
+        </div>
+      </div>
+      
+
+      <div class="line"></div>
+
+    </div>
+
+      <div unselectable="on" draggable="false" ondragstart="return false;" class="message-overlay" id="message-overlay">
+        <img onclick="imgClick()" src="porcos.png" alt="Pop_up_text">
+      </div>
+
+      <!-- GIFT BOX SOURCE CODE: https://tympanus.net/codrops/2013/12/24/merry-christmas-with-a-bursting-gift-box/ -->
+
+      <div id="merrywrap" class="merrywrap">
+        <canvas id="snowfall"></canvas>
+        <div class="giftbox">
+          <div class="cover">
+            <div></div>
+          </div>
+          <div class="box"></div>
+        </div>
+        <div class="icons" style="text-align: center; margin-top: 20px;">
+          <div class="row">
+            <span>F</span>
+            <span>e</span>
+            <span>l</span>
+            <span>i</span>
+            <span>z</span>
+          </div>
+          <div class="row">
+            <span>C</span>
+            <span>u</span>
+            <span>m</span>
+          </div>
+          <div class="row">
+            <span>A</span>
+            <span>n</span>
+            <span>g</span>
+            <span>e</span>
+            <span>l</span>
+            <span>a</span>
+          </div>
+        </div>
+        <div id="imageContainer" style="text-align: center; margin-top: 20px; display: none;">
+          <div id="imageWrapper">
+              <img id="myImage" src="https://www.planetadelibros.com/usuaris/libros/fotos/411/original/alas-de-onix-empireo-3-edicion-limitada-con-cantos-tintados_9788408297314_3d_202410031709.png" alt="Alas de Onix" >
+          </div>
+        </div>
+      </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  <script>
+
+    /**
+Asset =>
+JS audio using howlerJS:
+https://howlerjs.com/
+Apple Font:
+https://sf.abarba.me/SF-UI-Text-UltrathinItalic.otf ===https://gist.github.com/AndrewBarba/2c0f6612ceef30f5f55d===
+iPhone signal bar: https://icons8.com/icon/set/signal/all
+iPhone framework: https://preview.ibb.co/dGjspw/Untitled_1.png
+**/
+
+var d = new Date();
+var dt = d.getDate();
+var h = d.getHours();
+var m = d.getMinutes();
+
+function aZero(n) {
+  return n.toString().length == 1 ?  n = '0' + n : n;
+}
+
+(function() {
+    var days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+
+var months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+    Date.prototype.getMonthName = function() {
+        return months[ this.getMonth() ];
+    };
+    Date.prototype.getDayName = function() {
+        return days[ this.getDay() ];
+    };
+})();
+var day = d.getDayName();
+var month = d.getMonthName();
+
+var x = aZero(h)+":"+aZero(m);
+var y = day+", "+month+" "+dt;
+var o = "Movis";
+
+document.getElementById("clock-text").innerHTML = x;
+document.getElementById("date-text").innerHTML = y;
+document.getElementById("temp-notch").innerHTML = o;
+
+var message = document.getElementById('message-overlay');
+var mw = document.getElementById('merrywrap');
+var audio = new Howl({
+  src: ['https://s0.vocaroo.com/media/download_temp/Vocaroo_s0E0FP15QAsj.mp3'],
+  volume: 1
+});
+var mcSong = new Howl({
+  src: ['https://ia802604.us.archive.org/12/items/WeWishYouAMerryChristmas_123/WeWishYouAMerryChristmas_64kb.mp3'],
+  volume: 0.5,
+  loop: true,
+});
+
+// <!-- GIFT BOX SOURCE CODE: https://tympanus.net/codrops/2013/12/24/merry-christmas-with-a-bursting-gift-box/ -->
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Animación de la caja (tu código)
+  var merrywrap = document.getElementById("merrywrap");
+  var box = merrywrap.getElementsByClassName("giftbox")[0];
+  var step = 1;
+  var stepMinutes = [2000, 2000, 1000, 1000];
+  
+    function stepClass(step){
+      merrywrap.className='merrywrap';
+      merrywrap.className='merrywrap step-'+step;
+    }
+
+  function openBox() {
+    if (step === 1) {
+      box.removeEventListener("click", openBox, false);
+    }
+    stepClass(step);
+    if (step === 3) {
+        animateLetters(); // Inicia la animación de letras al llegar al paso 3
+    }
+    if (step === 4) {
+        return;
+    }
+    setTimeout(openBox, stepMinutes[step - 1]);
+    step++;
+  }
+    function init(){
+    box.addEventListener("click",openBox,false);
+    }
+
+  init();
+    
+  // Animación de las letras y aparición de la imagen (código que te proporcioné)
+  const imageContainer = document.getElementById('imageContainer');
+  const letters = document.querySelectorAll('.icons .letter, .icons span');
+
+  function showImage() {
+      imageContainer.style.display = 'block';
+  }
+
+  function animateLetters() {
+    let delay = 0;
+    letters.forEach(letter => {
+      setTimeout(() => {
+        letter.classList.add('visible');
+      }, delay);
+      delay += 100;
+    });
+       setTimeout(showImage, letters.length * 100);
+  }
+});
+
+// =====================
+
+$(document).ready(function(){
+  setTimeout(function() {
+    audio.play();
+    message.classList.add('animated', 'zoomIn');
+    message.style.visibility = "visible";
+  }, 2000);
+
+  $("#message-overlay").click(function() {
+    $("#lock-icon").remove();
+    $("#clock-text-overlay").remove();
+    $("#date-overlay").remove();
+    $("#message-overlay").remove();
+    $("#touch-overlay").remove();
+    mcSong.play();
+    $(".content").css('background-image', 'url(https://i.pinimg.com/564x/8f/9b/86/8f9b869738d41a4a6126376cdbc6919c.jpg)');
+    document.getElementById("temp-notch").innerHTML = x;
+    mw.style.visibility = "visible";
+    giftAnimation();
+  });
+})
+
+  </script>
+</body>
+</html>
